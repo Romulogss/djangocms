@@ -2,6 +2,6 @@
 
 {% if author %}
    <a href="{% namespace_url 'article-list-by-author' author.slug namespace=namespace default='' %}">
-        {{ author.name }}
+        Postado por{{ author.name }} em {{ article.publishing_date|date:"F d, Y" }}
     </a>
 {% endif %}

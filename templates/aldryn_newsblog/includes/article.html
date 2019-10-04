@@ -3,6 +3,7 @@
 <article class="article
     {% if article.is_featured %} featured{% endif %}
     {% if not article.published %} unpulished {% endif %}">
+    {% if not detail_view %}
     <div class="post-preview">
         <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">
           <h2 class="post-title">
@@ -23,7 +24,8 @@
             em {{ article.publishing_date|date:"F d, Y" }}
         </p>
     </div>
-    <hr>            
+    <hr>        
+    {% endif %}    
     {% if detail_view %}
       {% render_placeholder article.content language placeholder_language %}
     {% endif %}
