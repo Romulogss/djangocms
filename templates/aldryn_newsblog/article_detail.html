@@ -11,12 +11,12 @@
     {% static_placeholder "newsblog_social" %}
 
     <ul class="pagination">
-        {% if prev_article %}
-            <li class="page-item"><a class="page-link" href="{{ prev_article.get_absolute_url }}">{% trans "Previous Article" %}</a></li>
-        {% endif %}
-        <li class="page-item"><a class="page-link" href="{% namespace_url "article-list" %}">{% trans "Back to Overview" %}</a></li>
         {% if next_article %}
             <li class="page-item"><a class="page-link" href="{{ next_article.get_absolute_url }}">{% trans "Next Article" %}</a></li>
+        {% endif %}
+        <li class="page-item"><a class="page-link" href="{% namespace_url "article-list" %}">{% trans "Back to Overview" %}</a></li>
+        {% if prev_article %}
+            <li class="page-item"><a class="page-link" href="{{ prev_article.get_absolute_url }}">{% trans "Previous Article" %}</a></li>
         {% endif %}
     </ul>
 {% endblock %}
