@@ -21,6 +21,7 @@ INSTALLED_ADDONS = [
     'aldryn-sso',
     'aldryn-django-cms',
     'aldryn-background-image',
+    'aldryn-forms',
     'aldryn-newsblog',
     'djangocms-bootstrap4',
     'djangocms-googlemap',
