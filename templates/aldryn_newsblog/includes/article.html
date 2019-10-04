@@ -4,17 +4,24 @@
     {% if article.is_featured %} featured{% endif %}
     {% if not article.published %} unpulished {% endif %}">
     <div class="post-preview">
-        <a href="post.html">
+        <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">
           <h2 class="post-title">
-            Man must explore, and this is exploration at its greatest
+            {% render_model article "title" %}
           </h2>
+          {% if article.lead_in %}
           <h3 class="post-subtitle">
-            Problems look mighty small from 150 miles up
+              {% if not detail_view %}
+                  {% render_model article "lead_in" "" "" "truncatewords:'20'" %}
+              {% else %}
+                  {% render_model article "lead_in" %}
+              {% endif %}
           </h3>
+          {% endif %}
         </a>
-        <p class="post-meta">Posted by
-          <a href="#">Start Bootstrap</a>
-            on September 24, 2018</p>
+        <p class="post-meta">Posted by 
+            {% include "aldryn_newsblog/includes/author.html" with author=article.author %}
+            on {{ article.publishing_date|date }}
+        </p>
     </div>
     <hr>            
     {% if detail_view %}
